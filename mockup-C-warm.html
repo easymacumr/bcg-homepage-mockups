@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BCG PTO - Mock-up C (warm, new palette)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1f2f55;--red:#d32300;--gold:#f5b82e;--sky:#58c7f0;--cream:#fff8ee;--ink:#22283a;--muted:#5d6475;--bg:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:'Fredoka',Arial,sans-serif;font-weight:700;line-height:1.1;color:var(--navy)}
+a{color:var(--navy);text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:14px 30px;border-radius:999px;font-weight:800;font-size:16px}
+.btn-red{background:var(--red);color:#fff}.btn-navy{background:var(--navy);color:#fff}.btn-gold{background:var(--gold);color:var(--navy)}.btn-line{border:2px solid var(--navy);color:var(--navy)}
+header{background:#fff;border-bottom:1px solid #eee}
+.nav{display:flex;align-items:center;justify-content:space-between;height:86px}
+.brand{display:flex;align-items:center;gap:12px}.brand img{height:64px}
+.brand b{font-family:'Fredoka';font-size:24px;color:var(--navy)}
+.brand small{display:block;font-size:12px;color:var(--muted)}
+nav ul{display:flex;gap:28px;list-style:none;align-items:center}
+nav a{color:var(--navy);font-weight:700;font-size:15px}
+nav .donate{background:var(--red);color:#fff;padding:10px 22px;border-radius:999px}
+.burger{display:none;width:30px;height:22px;border-top:3px solid var(--navy);border-bottom:3px solid var(--navy);position:relative}
+.burger:after{content:"";position:absolute;left:0;right:0;top:50%;border-top:3px solid var(--navy);transform:translateY(-50%)}
+.hero{background:var(--cream);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center;min-height:540px;padding-top:30px;padding-bottom:30px}
+.hero .kicker{display:inline-block;background:var(--gold);color:var(--navy);padding:6px 14px;border-radius:999px;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:58px;margin-bottom:16px}
+.hero h1 span{color:var(--red)}
+.hero p{font-size:19px;color:#444;max-width:520px;margin-bottom:28px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero .art{position:relative;text-align:center}
+.hero .blob{position:absolute;width:440px;height:440px;border-radius:50%;background:#ffe6c7;left:50%;top:50%;transform:translate(-50%,-50%);z-index:0}
+.hero .art img{width:380px;max-width:100%;position:relative;z-index:1;filter:drop-shadow(0 12px 24px rgba(31,47,85,.18))}
+.meet{background:var(--navy);color:#fff}
+.meet .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center;min-height:90px;padding-top:14px;padding-bottom:14px}
+.meet .cal{background:#fff;color:var(--navy);border-radius:12px;text-align:center;padding:6px 16px;line-height:1.1}
+.meet .cal small{display:block;font-size:11px;font-weight:800;color:var(--red);letter-spacing:1px}.meet .cal b{font-family:'Fredoka';font-size:30px}
+.meet h3{color:#fff;font-size:22px;margin-bottom:2px}.meet p{color:#c9d2e8;font-size:15px}
+.meet a{color:#fff;border:2px solid #4a5a84;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px}
+section{padding:70px 0}
+.h2{font-size:42px;margin-bottom:6px}.sub{color:var(--muted);font-size:18px;margin-bottom:34px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:2px solid #eef0f4;border-radius:22px;padding:32px 28px;box-shadow:0 10px 30px rgba(31,47,85,.06)}
+.card .dot{width:54px;height:54px;border-radius:16px;margin-bottom:18px;display:flex;align-items:center;justify-content:center;font-family:'Fredoka';font-size:26px;color:#fff}
+.card h3{font-size:26px;margin-bottom:10px}.card p{color:#4a5060;margin-bottom:18px;font-size:16px}
+.card a{font-weight:800;color:var(--red)}
+.events{background:var(--cream)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split img{width:100%;height:400px;object-fit:cover;border-radius:28px}
+.split .oh{font-family:'Fredoka';color:var(--red);font-size:20px;margin-bottom:10px}
+.split h2{font-size:44px;margin-bottom:14px}.split p{color:#444;margin-bottom:24px}
+.res{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:28px}
+.box{background:#f6f8fc;border-radius:22px;padding:28px}
+.box h3{font-size:24px;margin-bottom:10px}.box p{font-size:15px;color:#4a5060;margin-bottom:16px}
+.schools a{display:flex;align-items:center;gap:10px;padding:11px 14px;margin-bottom:8px;background:#fff;border-radius:12px;color:var(--navy);font-weight:700;font-size:15px}
+.schools a:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--sky)}
+.schools a:first-child:before{background:var(--red)}
+.news{display:flex;gap:8px}.news input{flex:1;border:2px solid #dde3ee;padding:11px;border-radius:999px;font:inherit;background:#fff}
+.news button{background:var(--navy);color:#fff;border:0;padding:11px 18px;border-radius:999px;font-weight:800;font:inherit}
+.strong .wrap{display:flex;gap:24px;align-items:center;background:#fff;border:2px solid #eef0f4;border-radius:22px;padding:22px 28px}
+.strong img{width:84px;height:84px;object-fit:cover;border-radius:50%}
+.strong h3{font-size:24px;margin-bottom:4px}.strong p{color:#4a5060}
+.sponsors{text-align:center}.sponsors img{width:100%;max-width:980px;border-radius:16px}
+footer{background:var(--navy);color:#d7deee;padding:54px 0 30px}
+footer .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center}
+footer img{width:130px;background:#fff;border-radius:50%;padding:6px}
+footer p{font-size:15px;line-height:1.7}footer b{color:#fff;font-family:'Fredoka';font-size:18px}
+footer .social a{display:inline-block;margin-left:10px;padding:11px 20px;background:#2c3d68;color:#fff;border-radius:999px;font-weight:700;font-size:14px}
+footer .legal{margin-top:30px;text-align:center;font-size:13px;color:#8e9bbd}
+@media (max-width:700px){
+ .wrap{padding:0 18px}
+ nav ul{display:none}.burger{display:block}.brand img{height:50px}.brand b{font-size:20px}.brand small{display:none}.nav{height:70px}
+ .hero .wrap{grid-template-columns:1fr;min-height:0;text-align:center;padding-top:34px;padding-bottom:34px}.hero h1{font-size:40px}.hero p{font-size:16px;margin:0 auto 22px}.hero .cta{justify-content:center}
+ .hero .art img{width:220px}.hero .blob{width:260px;height:260px}
+ .meet .wrap{grid-template-columns:auto 1fr;gap:16px}.meet a{grid-column:1/3;justify-self:start}
+ section{padding:46px 0}.h2{font-size:34px}.grid3,.split,.res{grid-template-columns:1fr;gap:18px}
+ .split img{height:230px}.split h2{font-size:36px}
+ .strong .wrap{flex-direction:column;text-align:center}
+ footer .wrap{grid-template-columns:1fr;text-align:center}footer .social a{margin:6px 4px 0}
+}
+</style></head><body>
+<header><div class="wrap nav">
+ <div class="brand"><img src="assets/logo.png" alt=""><div><b>BCG PTO</b><small>Ball-Chatham-Glenwood Parent Teacher Organization</small></div></div>
+ <nav><ul><li><a href="#">About</a></li><li><a href="#">Events &amp; Fundraisers</a></li><li><a href="#">Spirit Wear</a></li><li><a href="#">Resources</a></li><li><a href="#" class="donate">Donate</a></li></ul></nav>
+ <div class="burger"></div>
+</div></header>
+
+<div class="hero"><div class="wrap">
+ <div><div class="kicker">Serving all of Chatham's elementary schools</div>
+ <h1>Big things happen when <span>parents and teachers</span> team up.</h1>
+ <p>The PTO for Ball, Chatham and Glenwood Elementary. Join the family, lend a hand at an event, or give to the programs our kids love.</p>
+ <div class="cta"><a class="btn btn-red" href="#">Join the PTO</a><a class="btn btn-line" href="#">Volunteer</a></div></div>
+ <div class="art"><div class="blob"></div><img src="assets/logo.png" alt="BCG PTO"></div>
+</div></div>
+
+<div class="meet"><div class="wrap">
+ <div class="cal"><small>DEC</small><b>14</b></div>
+ <div><h3>Next PTO meeting: Monday, December 14 at 6:30 PM</h3><p>Chatham Library, 600 E Spruce St. We meet the 2nd Monday of every month. All parents welcome.</p></div>
+ <a href="#">Add to calendar</a>
+</div></div>
+
+<section><div class="wrap">
+ <h2 class="h2">Three ways to get involved</h2><p class="sub">Pick one, pick all three. Anything helps.</p>
+ <div class="grid3">
+  <div class="card"><div class="dot" style="background:var(--red)">1</div><h3>Join</h3><p>Membership funds every event, program and classroom grant. Sign up takes two minutes.</p><a href="#">Join us &rsaquo;</a></div>
+  <div class="card"><div class="dot" style="background:var(--navy)">2</div><h3>Volunteer</h3><p>An hour at a book fair or a whole committee. Contact your school's President or Vice-President, and submit a background check first.</p><a href="#">Background check &rsaquo;</a></div>
+  <div class="card"><div class="dot" style="background:var(--gold);color:var(--navy)">3</div><h3>Give</h3><p>Sponsor a program, donate online, or shop Spirit Wear. Every dollar stays with our three schools.</p><a href="#">Donate &rsaquo;</a></div>
+ </div>
+</div></section>
+
+<section class="events"><div class="wrap split">
+ <img src="assets/chalkboard.jpg" alt="">
+ <div><div class="oh">Fun Fairs &amp; Book Fairs &amp; Spirit Wear... oh my!</div><h2>Events &amp; Fundraisers</h2>
+ <p>With so many events it's easy to get involved, and you don't have to do them all. Donate your time, money or resources to even one of our efforts and you'll make an amazing contribution to your child's school.</p>
+ <a class="btn btn-navy" href="#">See this year's events</a></div>
+</div></section>
+
+<section><div class="wrap res">
+ <div class="box"><h3>Virtual Backpack</h3><p>Our kids' backpacks get stuffed enough! The district's Virtual Backpack holds the flyers about fundraisers, community events and organizations.</p><a class="btn btn-red" href="#">Open the Virtual Backpack</a><p style="margin-top:20px;margin-bottom:0"><a href="#"><b>Teacher's Favorites &rsaquo;</b></a><br><a href="#"><b>Learning Links &rsaquo;</b></a></p></div>
+ <div class="box schools"><h3>School sites</h3><a href="#">Ball-Chatham School District</a><a href="#">Ball Elementary</a><a href="#">Chatham Elementary</a><a href="#">Glenwood Elementary</a></div>
+ <div class="box"><h3>Stay in the loop</h3><p>One email when something matters. Never miss an update.</p><div class="news"><input placeholder="Email address"><button>Subscribe</button></div></div>
+</div></section>
+
+<section class="strong" style="padding-top:0"><div class="wrap">
+ <img src="assets/ribbon-only.jpg" alt=""><div><h3>Chatham Strong</h3><p>Supporting our schools, our teachers and our neighbors. Learn how the PTO stands with the community.</p></div>
+</div></section>
+
+<section class="sponsors" style="padding-top:0"><div class="wrap"><img src="assets/sponsors.png" alt="Thank you to our 2026-27 sponsors"></div></section>
+
+<footer><div class="wrap">
+ <img src="assets/logo.png" alt="">
+ <p><b>Ball Chatham Glenwood Parent Teacher Organization</b><br>501(c)(3) Nonprofit &middot; EIN 82-3909559<br>PO Box 61, Chatham, IL 62629 &middot; bcgpto@bcgpto.org</p>
+ <div class="social"><a href="#">Facebook</a><a href="#">Instagram</a></div>
+</div><div class="legal">&copy; 2026 BCGPTO</div></footer>
+<div id="reviewbar" style="position:fixed;left:0;right:0;bottom:0;z-index:999;background:rgba(20,20,20,.92);color:#eee;font:14px/1.4 Arial,sans-serif;padding:8px 14px;display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap">
+<span style="opacity:.75">Mock-up review:</span>
+<a href="mockup-A-conservative.html" style="color:#fff;font-weight:bold;text-decoration:none">A conservative</a>
+<a href="mockup-B-bold.html" style="color:#fff;font-weight:bold;text-decoration:none">B bold</a>
+<a href="mockup-C-warm.html" style="color:#fff;font-weight:bold;text-decoration:none">C warm</a>
+<a href="index.html" style="color:#9fd8ff;text-decoration:none">All three</a>
+</div>
+<style>body{padding-bottom:44px}</style>
+</body></html>
